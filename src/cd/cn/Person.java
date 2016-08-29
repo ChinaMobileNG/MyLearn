@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.function.ToIntFunction;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -21,6 +22,15 @@ public class Person {
 	
 	public Map<String, Person> getPersonCache() {
 		return personCache;
+	}
+
+	private int worktime;
+	
+	public int getWorktime() {
+		return worktime;
+	}
+	public void setWorktime(int worktime) {
+		this.worktime = worktime;
 	}
 
 	private Address address;
@@ -46,15 +56,16 @@ public class Person {
 	public Person(String name){
 		this.name=name;
 	}
-	public Person(int age,String name,Address address){
+	public Person(int age,String name,int worktime, Address address){
 		this.age=age;
 		this.name=name;
+		this.worktime=worktime;
 		this.address=address;
 	}
 	
 	@Override
 	public String toString(){
-		return ("Name: "+getName()+"   Age: "+getAge()+" Address: "+getAddress());
+		return ("Name: "+getName()+"   Age: "+getAge()+"   Worktime: "+getWorktime()+" Address: "+getAddress());
 	}
 	
 	public Address getAddress() {
@@ -72,15 +83,15 @@ public class Person {
 		return getProvince().equals("Shanxi");
 	}
 	
-	private static Person createPerson(int age,String name,String nation,String province,String city){
-		return new Person(age, name, new Address(nation, province, city));
+	private static Person createPerson(int age,String name,int worktime, String nation,String province,String city){
+		return new Person(age, name, worktime ,new Address(nation, province, city));
 	}
 	
-	public static void main(String[] as){
-		Person Ten = createPerson(10,"Ten","China","Shanxi", "Xiaan");
-		Person Eleven = createPerson(13,"Thirteen","China","Shanxi", "Shangluo");
-		Person Twelve = createPerson(11,"Eleven","China","Hebei", "Hengshui");
-		Person Thirteen = createPerson(12,"Twelve","China","Shandong", "Yantai");
+	public static List<Person> mockUpDb(){
+		Person Ten = createPerson(10,"Ten",2,"China","Shanxi", "Xiaan");
+		Person Eleven = createPerson(13,"Thirteen",3,"China","Shanxi", "Shangluo");
+		Person Twelve = createPerson(11,"Eleven",4,"China","Hebei", "Hengshui");
+		Person Thirteen = createPerson(12,"Twelve",2,"China","Shandong", "Yantai");
 		List<Person> people =new ArrayList<Person>(){
 			/**
 			 * 
@@ -94,6 +105,11 @@ public class Person {
 				add(Thirteen);
 			}
 		};
+		return people;
+	}
+	
+	public static void main(String[] as){
+		List<Person> people =mockUpDb();
 		getStream(people).forEach(p->System.out.println(p));
 		//Caution here !!! One stream can not be used repeatedly
 		Map<Boolean,List<Person>> laoShan = getStream(people).collect(Collectors.partitioningBy(Person::isFromShanxi));
@@ -121,7 +137,7 @@ public class Person {
 		show("Shandong",peopleOfProvince);
 		
 		//use Map for cache
-		for(int i=0;i<10;i++){
+		for(int i=0;i<3;i++){
 			Person tPerson = personCache.computeIfAbsent("Ten", Person::new);
 			/*
 					personCache.get("Ten");
@@ -133,6 +149,11 @@ public class Person {
 			*/
 			System.out.println(tPerson);
 		}
+		
+		//Refactoring with lambda {Void WET}
+		int ageTotal = countAge();
+		int workTimeTotal = countWorktime();
+		System.out.println(ageTotal+" "+workTimeTotal);
 	}
 	
 	public static  <T> Stream<T> getStream(List<T> list){
@@ -151,6 +172,18 @@ public class Person {
 			personCache.put(name, person);
 		}
 		return person;
+	}
+	
+	public static  <T> int countFeature(ToIntFunction<Person> function){
+		return mockUpDb().stream().mapToInt(function).sum();
+	}
+	
+	public static int countAge(){
+		return countFeature(p->p.getAge());
+	}
+	
+	public static int countWorktime(){
+		return countFeature(p->p.getWorktime());
 	}
 
 }

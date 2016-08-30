@@ -1,6 +1,11 @@
 package cn.algorithms.chapter1;
 
 import java.util.Random;
+/**
+ * hashtable middle-square method
+ * @author i330344
+ *
+ */
 
 public class HashTable {
 	

@@ -1,6 +1,9 @@
 package cn.test.statik;
 
 public class BaseStatic {
+	
+	public static String name ="BaseStatic";
+	
 	static {
 		System.out.println("Load base static");
 	}

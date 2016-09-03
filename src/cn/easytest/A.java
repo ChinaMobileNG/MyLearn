@@ -4,25 +4,34 @@ public class A {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		int i = 10;
-		int i2=i;
-		i2++;
-		System.out.println(i+" "+i2);
-		Integer I = Integer.valueOf(10);
-		Integer I2 =I;
-		I2 = Integer.valueOf(I2.hashCode()+100);
-		System.out.println(I+" "+I2);
-		String haha = "HA HA";
-		transfer(haha);
-		System.out.println(haha);
-		String hahe = haha;
-		System.out.println(hahe);
-		hahe = "HAHE";
-		System.out.println(haha);
+		studyStringEquals();
+		//studyIntegerEquals();
 	}
 	
-	public static void transfer(String s){
-		s = new String("OH NO");
+	public static void studyStringEquals(){
+		String aString="hello";
+		String bString=new String("hello");
+		String cString=new String("hello");
+		System.out.println("aString equals bString: "+  aString.equals(bString));
+		if(aString==bString){
+			System.out.println("="+true);
+		}else{
+			System.out.println("="+false);
+		}
+		System.out.println("b equals c: "+bString.equals(cString));
+	}
+	
+	public static void studyIntegerEquals(){
+		Integer aInteger = 1;
+		Integer bInteger =1;
+		System.out.println(aInteger==bInteger);
+		System.out.println(aInteger.equals(bInteger));
+		Integer cInteger = Integer.valueOf(1);
+		Integer dInteger = Integer.valueOf(1);
+		System.out.println(aInteger==cInteger);
+		System.out.println(aInteger.equals(cInteger));
+		System.out.println(cInteger==dInteger);
+		System.out.println(cInteger.equals(dInteger));
 	}
 
 }

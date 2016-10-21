@@ -1,12 +1,42 @@
 package cn.easytest;
 
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Scanner;
+import java.util.Set;
+import java.util.stream.Collectors;
+
+import org.springframework.security.crypto.password.StandardPasswordEncoder;
+
 public class A {
 
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-		studyStringEquals();
-		//studyIntegerEquals();
-	}
+	 public static void main(String[] args) {  
+	        Scanner sc = new Scanner(System.in);   
+	        String input = sc.nextLine();  
+	        System.out.println(noRepeat(input));  
+	    }  
+	  
+	    public static String noRepeat(String str){  
+	        char[] chars = new char[255];  
+	        char[] input = str.toCharArray();  
+	  
+	        int temp;  
+	        for(int i = 0;i< input.length;i++){  
+	            temp = input[i];  
+	            if(chars[temp] == 0)  
+	                chars[temp] = 1;  
+	        }  
+	  
+	        StringBuilder sb = new StringBuilder();  
+	        for (int i = 0; i < chars.length; i++) {  
+	            if(chars[i] == 1)  
+	                sb.append((char)i);  
+	        }  
+	        return sb.toString();  
+	    } 
 	
 	public static void studyStringEquals(){
 		String aString="hello";

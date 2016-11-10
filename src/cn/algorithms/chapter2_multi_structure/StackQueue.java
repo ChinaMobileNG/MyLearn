@@ -1,4 +1,4 @@
-package cn.algorithms.chapter2;
+package cn.algorithms.chapter2_multi_structure;
 
 import java.util.Stack;
 

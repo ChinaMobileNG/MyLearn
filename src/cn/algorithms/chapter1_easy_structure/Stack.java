@@ -1,4 +1,4 @@
-package cn.algorithms.chapter1;
+package cn.algorithms.chapter1_easy_structure;
 
 import java.util.Arrays;
 

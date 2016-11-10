@@ -1,4 +1,6 @@
-package cn.algorithms.chapter3;
+package cn.algorithms.chapter3_sort.test;
+
+import cn.algorithms.chapter3_sort.QuickSort;
 
 public class QuickSortTest {
 

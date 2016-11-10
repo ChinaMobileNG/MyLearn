@@ -1,4 +1,6 @@
-package cn.algorithms.chapter1;
+package cn.algorithms.chapter1_easy_structure.test;
+
+import cn.algorithms.chapter1_easy_structure.HashTable;
 
 public class HashTableTest {
 

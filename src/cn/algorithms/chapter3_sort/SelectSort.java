@@ -1,4 +1,4 @@
-package cn.algorithms.chapter3;
+package cn.algorithms.chapter3_sort;
 
 public class SelectSort {
 	
@@ -13,7 +13,6 @@ public class SelectSort {
 	public void sort(){
 		for(int i=0;i<length;i++){
 			int max = findMax(array, i);
-			System.out.println("max: "+max);
 			array[i]=max;
 		}
 	}
@@ -26,7 +25,6 @@ public class SelectSort {
 				index = i;
 			}
 		}
-		System.out.println(index);
 		array[index]=array[start];
 		return max;
 	}

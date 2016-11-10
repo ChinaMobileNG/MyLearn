@@ -1,4 +1,4 @@
-package cn.algorithms.chapter3;
+package cn.algorithms.chapter3_sort;
 
 /**
  * Bucket sort

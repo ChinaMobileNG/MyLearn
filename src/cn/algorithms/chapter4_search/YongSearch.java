@@ -23,7 +23,7 @@ public class YongSearch {
 			}
 			
 		}
-		int result[] = new int[]{i,j};
+		int result[] = {i,j};
 		return yongMatrix[i][j]==key?result:null;
 	}
 

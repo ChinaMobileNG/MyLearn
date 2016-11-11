@@ -3,7 +3,7 @@ package cn.algorithms.chapter4_search.test;
 import cn.algorithms.chapter4_search.YongSearch;
 
 public class YongSearchTest {
-
+	
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		int[][] yong = {
@@ -14,7 +14,7 @@ public class YongSearchTest {
 		};
 		
 		YongSearch yongSearch = new YongSearch(yong);
-		int[] result=yongSearch.search(18);
+		int[] result=yongSearch.search(21);
 		System.out.println(result==null?"未找到":"定位：x:"+result[0]+" y:"+result[1]);
 	}
 

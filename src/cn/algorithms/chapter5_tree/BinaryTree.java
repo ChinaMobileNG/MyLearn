@@ -102,7 +102,6 @@ public class BinaryTree {
 		}
 	}
 	
-	
 	public void traversePostOrder(BinaryTreeNode node){
 		if(node!=null){
 			traversePostOrder(node.getLeftChild());
@@ -114,6 +113,4 @@ public class BinaryTree {
 	private void visit(BinaryTreeNode node){
 		System.out.print(node.getData()+" ");
 	}
-	
-	
 }

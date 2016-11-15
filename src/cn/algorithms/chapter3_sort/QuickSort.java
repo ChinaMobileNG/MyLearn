@@ -2,15 +2,15 @@ package cn.algorithms.chapter3_sort;
 
 public class QuickSort {
 	
-	private int[] array;
+	private int[] temp_array;
 	
 	public QuickSort(int[] array) {
 		// TODO Auto-generated constructor stub
-		this.array=array;
+		this.temp_array=array;
 	}
 	
 	public void sort(){
-		quickSort(array,0,array.length-1);
+		quickSort(temp_array,0,temp_array.length-1);
 	}
 	
 	public void quickSort(int[] array,int begin,int end){
@@ -39,8 +39,12 @@ public class QuickSort {
 	}
 	
 	public void print(){
-		for(int i=0;i<array.length;i++)
-			System.out.print(array[i]+" ");
+		for(int i=0;i<temp_array.length;i++)
+			System.out.print(temp_array[i]+" ");
+	}
+	
+	public int[] getResult(){
+		return temp_array;
 	}
 
 }
